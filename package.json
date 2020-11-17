@@ -1,7 +1,7 @@
 {
-  "name": "inst377-fa2020",
+  "name": "inst377-fa2020-a93-final-project",
   "version": "1.0.0",
-  "description": "Repository for INST377 Dynamic Web Applications Fall 2020 at UMD",
+  "description": "Repository for INST377 Group A93 final Project Dynamic Web Applications Fall 2020 at UMD",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,9 +13,9 @@
   "engines": {
     "node": "13.x"
   },
-  "author": "Alex Leitch",
+  "author": "Antoine Vignon",
   "license": "ISC",
-  "homepage": "https://antoinemik.github.io/INST377-FA2020",
+  "homepage": "https://github.com/AntoineMik/INST377-A93-Final-Project",
   "dependencies": {
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
