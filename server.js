@@ -30,7 +30,7 @@ app.route('/api')
     console.log('POST request detected');
 
 
-/* Get our API Using nested fetch
+    /* Get our API Using nested fetch
     await fetch("https://api.planetterp.com/v1/courses").then(function (response) {
 		    // Get a JSON object from the response
         return response.json();
@@ -69,15 +69,15 @@ app.route('/api')
 		    // if there's an error, log it
 		    console.log(error);
 	  });
-*/
+    */
 
 
 
-/* Better way using promise.all 
+    /* Better way using promise.all 
     The Promise.all() method (and promises in general) work in all modern browsers, 
     but have no IE support.*/
 
-  //------- returns 2 big arrays, first has course data, second has prof data ---------//
+    //------- returns 2 big arrays, first has course data, second has prof data ---------//
 
     const courseData = await fetch("https://api.planetterp.com/v1/courses");
     const professorData = await fetch("https://api.planetterp.com/v1/professors");
