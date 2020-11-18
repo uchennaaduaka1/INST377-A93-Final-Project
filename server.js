@@ -22,16 +22,95 @@ app.use((req, res, next) => {
 
 app.route('/api')
   .get(async (req, res) => {
-    console.log('GET request detected');
-    
+   
     //res.send(`Lab 5 for ${process.env.NAME}`);
   })
   .post(async (req, res) => {
+
     console.log('POST request detected');
-    const data = await fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json");
-    const newdata = await data.json();
-    console.log('Form data', newdata);
-    res.json(newdata);
+
+
+/* Get our API Using nested fetch
+    await fetch("https://api.planetterp.com/v1/courses").then(function (response) {
+		    // Get a JSON object from the response
+        return response.json();
+    })
+      .then(function (data) {
+
+		    // Log the data to the console
+         console.log(data);
+         
+         res.json(data);
+
+ 		    // Cache the data to a variable
+ 		    const courseData = data;
+
+ 		    // Make another API call and pass it into the stream
+         return fetch("https://api.planetterp.com/v1/professors");
+    })
+      .then(function (response) {
+		    // Get a JSON object from the response
+		    return response.json();
+    })
+      .then(function (data) {
+
+		    // Log the data to the console
+        console.log(data);
+        
+        res.json(data);
+
+		    // Cache the data to a variable
+		    const professorData = data;
+
+		    // Now that you have both APIs back, you can do something with the data
+
+    })
+      .catch(function (error) {
+		    // if there's an error, log it
+		    console.log(error);
+	  });
+*/
+
+
+
+/* Better way using promise.all 
+    The Promise.all() method (and promises in general) work in all modern browsers, 
+    but have no IE support.*/
+
+  //------- returns 2 big arrays, first has course data, second has prof data ---------//
+
+    const courseData = await fetch("https://api.planetterp.com/v1/courses");
+    const professorData = await fetch("https://api.planetterp.com/v1/professors");
+
+    Promise.all([courseData, professorData])
+    .then(function (responses) {
+      // Get a JSON object from each of the responses
+      return Promise.all(responses.map(function (response) {
+        return response.json();
+      }));
+    }).then(function (data) {
+      // Log the data to the console
+      // You would do something with both sets of data here
+      console.log('Form data', data);
+      res.json(data);
+    }).catch(function (error) {
+      // if there's an error, log it
+      console.log(error);
+    });
+
+    /*console.log('POST request detected');
+    const professorData = await fetch("GET https://api.planetterp.com/v1/professors");
+    const professor = await professorData.json();
+    console.log('Form data', professor);
+    res.json(professor);*/
+
+  
+    /*console.log('POST request detected');
+    const gradeData = await fetch("GET https://api.planetterp.com/v1/grades");
+    const grade = await data.json();
+    console.log('Form data', grade);
+    res.json(grade);*/
+
     
     //res.send('<b>Hello World</b>');
     
