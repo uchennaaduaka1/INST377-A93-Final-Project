@@ -24,11 +24,39 @@ async function getDatafromserver()
 }
 
 getDatafromserver()
+const course_data = rawdata[0];
+const professors_data = rawdata[1];
 
 
 /* Function to get course grade based on parameter */
 
 // Problem here is that the api does not allow access like this from the browser for security reasons.
+
+async function getCourseGrades(course_name)
+{
+    const headers = {
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+      'Access-Control-Allow-Origin': '*',
+      'Accept':'application/json', 'Content-Type': ' application/json',
+    };
+    
+    await fetch('https://api.planetterp.com/v1/grades?course=' + course_name,
+    {
+      method: 'GET',
+      headers: headers
+    })
+    .then(function(res) {
+        return res.json();
+    }).then(function(body) {
+        console.log(body);
+    }).catch((err) => {
+      console.log(err);
+    });
+  
+}
+
+// Testing with INST377
+const test_grade = getCourseGrades('INST377');
 
 async function getCourseGrade(department, course_number)
 {
@@ -73,3 +101,4 @@ function findMatches(wordToMatch, rawdata) {
     return Object.entries(course).department.match(regex); // || course.course_number.match(regex);
   });
 }
+
