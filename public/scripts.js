@@ -1,11 +1,13 @@
 
 
+
 // To hold our data
 const rawdata = [];
 
 /* Get data from server into our array as a json. This will get 2D array.
 rawdata[0] will have course data and rawdata[1] will have professors data.
 */
+
 async function getDatafromserver()
 {
 
@@ -23,15 +25,15 @@ async function getDatafromserver()
           });
 }
 
-getDatafromserver()
-const course_data = rawdata[0];
-const professors_data = rawdata[1];
+// getDatafromserver()
+// const course_data = rawdata[0];
+// const professors_data = rawdata[1];
 
 
 /* Function to get course grade based on parameter */
 
 // Problem here is that the api does not allow access like this from the browser for security reasons.
-
+/*
 async function getCourseGrades(course_name)
 {
     const headers = {
@@ -54,10 +56,10 @@ async function getCourseGrades(course_name)
     });
   
 }
-
+*/
 // Testing with INST377
-const test_grade = getCourseGrades('INST377');
-
+// const test_grade = getCourseGrades('INST377');
+/*
 async function getCourseGrade(department, course_number)
 {
   grade_data = fetch('https://api.planetterp.com/v1/grade$course=' + department + course_number)
@@ -69,16 +71,21 @@ async function getCourseGrade(department, course_number)
     //console.log(grade_data);
     return grade_data;
 }
-
+*/
 // Testing with INST377
 // const test_grade = getCourseGrade("INST", "377");
 
 const textInput = document.querySelector(".textInput");
 const suggestions = document.querySelector(".suggestions");
 
+textInput.addEventListener("change", (evt) => {
+  displaymatches(evt);
+})
 
-function displaymatches(){
-  const matchArray = findMatches(textInput.value, rawdata);
+function displaymatches(evt){
+  const value = evt.target.value;
+  const matchArray = findMatches(value, rawdata);
+  console.log(value)
   const html = matchArray.map(course => {
       return `
       <li>
