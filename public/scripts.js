@@ -89,6 +89,7 @@ async function getCourseGrade(department, course_number)
 // try -> catch (if we wanted)
 
 function displaymatches(evt, rawdata){
+  const suggestions = document.querySelector(".suggestions");
   const value = evt.target.value;
   const matchArray = findMatches(value, rawdata);
   console.log(value)
@@ -108,15 +109,16 @@ function filterFunctionCourse(string, rawdata){
   return rawdata.filter(f => {
     console.log("F: ", f)
     const regex = new RegExp(string, "gi"); // g means global and i means insensitive
-    return f.department.match(regex)
+    console.log("f.department: ", f.department);
+    if (f.department) {return f.department.match(regex)}
+    else {return f.slug.match(regex)}
   })
 }
 
 // Looking at the course object, there are a ton of nested arrays in the object so i'm having a lot of difficulty
 // being able to compare wordToMatch to a department
 function findMatches(wordToMatch, rawdata) {
-  const coursematch = filterFunctionCourse(wordToMatch, rawdata)
-  console.log(coursematch);
+  return filterFunctionCourse(wordToMatch, rawdata);
   /*
   return rawdata.filter((course) => {
     console.log(Object.entries(course))
