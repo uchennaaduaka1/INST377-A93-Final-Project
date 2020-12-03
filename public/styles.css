@@ -33,7 +33,9 @@
   }
   
   .search-bar > button{
-    align-items: right;
+    align-items: center;
+    left: 955px;
+    top:165px; 
+    position:absolute; 
 
-      
   }
