@@ -37,5 +37,7 @@
     left: 955px;
     top:165px; 
     position:absolute; 
+    border-radius: 50%;
+    background-color: white;
 
   }
