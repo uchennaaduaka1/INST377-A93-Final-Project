@@ -1,3 +1,29 @@
  body{
-     background-color: azure;
+     background-color: rgb(255, 252, 104);
  }
+
+ h1 {
+    color: #2a2a2a;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 80;
+  }
+
+ .textInput {
+    flex-wrap: wrap;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    justify-content: space-between;
+    width: 600px;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+  
+  .search_button{
+    align-items: right;
+
+      
+  }
