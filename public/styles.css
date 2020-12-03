@@ -12,11 +12,11 @@
   .header > img {
     width: 20%;
     height: 30%;
-    left: 8px;
+    left: 5px;
     right: 10px;
     position:absolute; 
-	top:0; 
-	left:0; 
+	  top:-40px; 
+	  left:0; 
 }
 
  .textInput {
@@ -32,7 +32,7 @@
     border-radius: 5px;
   }
   
-  .search_button{
+  .search-bar > button{
     align-items: right;
 
       
