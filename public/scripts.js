@@ -92,26 +92,32 @@ function displaymatches(evt, rawdata){
   const suggestions = document.querySelector(".suggestions");
   const value = evt.target.value;
   const matchArray = findMatches(value, rawdata);
-  console.log(value)
-  const html = matchArray.map(course => {
+  const html = matchArray.map(course => { 
+    if (course.department) {
       return `
       <li>
           <h4 class="name">${course.department} ${course.course_number}</h4>
           <p class="category">${course.title}</p>
       </li>
       `;
+    }
+    else {
+      return `
+      <li>
+          <h4 class="name">${course.type} ${course.name}</h4>
+          <p class="category">${course.courses}</p>
+      </li>
+      `;
+    }
   }).join('');
   suggestions.innerHTML = html;
 }
 
 function filterFunctionCourse(string, rawdata){
-  console.log("String: ", string, rawdata)
   return rawdata.filter(f => {
-    console.log("F: ", f)
     const regex = new RegExp(string, "gi"); // g means global and i means insensitive
-    console.log("f.department: ", f.department);
     if (f.department) {return f.department.match(regex)}
-    else {return f.slug.match(regex)}
+    else {return f.name.match(regex)}
   })
 }
 
