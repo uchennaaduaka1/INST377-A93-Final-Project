@@ -41,3 +41,8 @@
     background-color: white;
 
   }
+
+  button:hover {
+    background-color: #eb2f00;
+    color: white;
+  }
