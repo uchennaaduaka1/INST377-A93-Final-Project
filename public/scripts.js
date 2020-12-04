@@ -30,6 +30,7 @@ async function mainThread(){
   console.log("Rawdata from server, ", rawdata.length);
   console.log("classes", classes);
   console.log("teachers", teachers);
+  //new branch
   
   const textInput = document.querySelector("#textInput");
   const suggestions = document.querySelector(".suggestions");
