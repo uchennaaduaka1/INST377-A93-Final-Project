@@ -25,14 +25,26 @@ async function getDatafromserver()
 }
 async function mainThread(){
   const rawdata = await getDatafromserver()
-  const usableData = rawdata[0].concat(rawdata[1]);
+  const classes = rawdata[0];
+  const teachers= rawdata[1];
   console.log("Rawdata from server, ", rawdata.length);
-  console.log("Usable Data", usableData.length);
-
-  const textInput = document.querySelector(".textInput");
+  console.log("classes", classes);
+  console.log("teachers", teachers);
+  //new branch
+  
+  const textInput = document.querySelector("#textInput");
   const suggestions = document.querySelector(".suggestions");
+  
   textInput.addEventListener("change", (evt) => {
-    displaymatches(evt, usableData);
+    var typesearch = document.getElementById("textInput").getAttribute("placeholder");
+        
+    if(typesearch =="Enter Course"){
+    displaymatches(evt, classes);
+    console.log(typesearch);
+    }
+    else{
+    displaymatches(evt, teachers); 
+    }
   })
 }
 
@@ -94,20 +106,24 @@ function displaymatches(evt, rawdata){
   const matchArray = findMatches(value, rawdata);
   const html = matchArray.map(course => { 
     if (course.department) {
+      console.log(matchArray);
       return `
       <li>
           <h4 class="name">${course.department} ${course.course_number}</h4>
           <p class="category">${course.title}</p>
       </li>
       `;
+      
     }
     else {
+      console.log(matchArray);
       return `
       <li>
           <h4 class="name">${course.type} ${course.name}</h4>
           <p class="category">${course.courses}</p>
       </li>
       `;
+      
     }
   }).join('');
   suggestions.innerHTML = html;

@@ -8,6 +8,7 @@
     text-align: center;
     font-weight: 80;
   }
+ 
 
   .header > img {
     width: 20%;
@@ -19,7 +20,7 @@
 	  left:0; 
 }
 
- .textInput {
+ #textInput {
     flex-wrap: wrap;
     align-items: center;
     display: flex;
