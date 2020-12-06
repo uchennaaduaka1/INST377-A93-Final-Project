@@ -30,15 +30,15 @@ async function mainThread(){
   console.log("Rawdata from server, ", rawdata.length);
   console.log("classes", classes);
   console.log("teachers", teachers);
-  //new branch
+  //ne
   
   const textInput = document.querySelector("#textInput");
   const suggestions = document.querySelector(".suggestions");
-  
+  if (textInput !== null) {
   textInput.addEventListener("change", (evt) => {
     var typesearch = document.getElementById("textInput").getAttribute("placeholder");
         
-    if(typesearch =="Enter Course"){
+    if(document.getElementById('course_search').checked){
     displaymatches(evt, classes);
     console.log(typesearch);
     }
@@ -47,8 +47,16 @@ async function mainThread(){
     }
   })
 }
+}
 
 mainThread().catch(err => {console.error(err)});
+
+
+//async function loadData() {
+  
+//} window.onload = loadData;
+
+
 // const course_data = rawdata[0];
 // const professors_data = rawdata[1];
 
@@ -107,10 +115,11 @@ function displaymatches(evt, rawdata){
   const html = matchArray.map(course => { 
     if (course.department) {
       console.log(matchArray);
-      return `
+      
+     return `
       <li>
-          <h4 class="name">${course.department} ${course.course_number}</h4>
-          <p class="category">${course.title}</p>
+      <h4 class= "courses">${course.department}${course.course_number}</h4>
+      <p class="category">${course.title}</p>
       </li>
       `;
       
@@ -127,7 +136,45 @@ function displaymatches(evt, rawdata){
     }
   }).join('');
   suggestions.innerHTML = html;
+  var more = document.getElementsByClassName("courses");
+  for (let i = 0; i < more.length; i++) {
+    more[i].onclick = function(e) {
+      const newpage = document.querySelector(".newpage");
+      mo=more[i].innerHTML;
+      var z = mo.match(/[\d\.]+|\D+/g);
+      console.log(z[1]);
+      var result = rawdata.filter((person)=>(person.course_number == z[1]));
+      const newhtml = result.map(course => { 
+        console.log(result);
+        
+       return `
+       <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="styles.css" />
+     <title>Group A93 Final Project</title>
+     </head>
+       <body>
+       <div class= "de">
+       <li>
+         <h4>${course.department}${course.course_number}</h4>
+         <p class="category">${course.title}</p>
+         <p class="category">${course.credits}</p>
+         <p class="category">${course.department}</p>
+         <p class="category">${course.professors}</p>
+       </li>
+        </div>
+         </body>`; 
+        
+      }).join('');
+      newpage.innerHTML=newhtml;
+     
+    }
+  }
+ 
+  
 }
+
 
 function filterFunctionCourse(string, rawdata){
   return rawdata.filter(f => {
