@@ -31,6 +31,9 @@ Content Outline:
 
 
     Technical system decision rationale (What technical system decision can we list here?):
+        -We decided to seperate the course search and the professor search on the backend
+            -Doing this allowed the return searches to be less dense when returned.
+            -This also lead to a better front end look when users wanted to search as well
 
     How/if your final system helps to address the problem:
         We address the problem by providing our stakeholders with a website where they can get all the course, grade, and professor informaiton they need. We provide them with the choice of filtering through searches. A major feature that wasn't included in the existing solution
