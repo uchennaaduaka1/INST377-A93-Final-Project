@@ -60,3 +60,20 @@
     background-color: #eb2f00;
     color: white;
   }
+
+  .suggestions li{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    display: inline-block;
+    border: 2px solid #000000;
+    padding: 20px;
+    width: 550px;
+    height: 150px;
+  }
+  
+  
+  
