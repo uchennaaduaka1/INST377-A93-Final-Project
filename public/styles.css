@@ -47,7 +47,7 @@
     color: white;
   }
 
-  .suggestions{
+  .suggestions li{
     margin-left: auto;
     margin-right: auto;
     position: relative;
