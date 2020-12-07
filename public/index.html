@@ -15,14 +15,14 @@
         <div class="container, flex-outer">
             <div class="header">
                 <h1>University of Maryland Class and Professor Database</h1>
-                <!--<img src="https://cdn.freebiesupply.com/logos/thumbs/2x/university-of-maryland-logo.png" class="link" alt="UMD Logo">-->
+                <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/university-of-maryland-logo.png" class="link" alt="UMD Logo">
             </div>
 
             <div class="search-bar">
-                <input type="radio" name="searchfilter" id="course_search" value="course_search" checked/>
-                <label for="course_search">Search By Course</label>
-                <input type="radio" name="searchfilter" id="professor_search" value="professor_search"/>
-                <label for="professor_search">Search By Professor</label>
+                <input class=courseRadio type="radio" name="searchfilter" id="course_search" value="course_search" checked/>
+                <label class= courseRadioLabel for="course_search">Search By Course</label>
+                <input class=profRadio type="radio" name="searchfilter" id="professor_search" value="professor_search"/>
+                <label class=profRadioLabel for="professor_search">Search By Professor</label>
 
                 <input type="text" id="textInput" placeholder="Enter Course"></input>
                 <button id="search_button" class="search_button" name="search_button" type="submit">

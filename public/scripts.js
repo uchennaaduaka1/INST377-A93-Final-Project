@@ -1,6 +1,3 @@
-
-
-
 // To hold our data
 const rawdata = [];
 
@@ -196,4 +193,3 @@ function findMatches(wordToMatch, rawdata) {
     return Object.entries(course).department.match(regex); // || course.course_number.match(regex);
   }); */
 }
-
