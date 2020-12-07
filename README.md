@@ -16,3 +16,7 @@ Introduction and Information Problem
     The Average grade can also be filtered to represent all semesters or solely the semesters from the previous academic calendar year. 
     We hope that in the end, our service will benefit students that are looking for classes to take
     and faculty that want easier access to information about university classes.
+
+Developers Manual:
+
+    
