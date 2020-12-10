@@ -94,7 +94,6 @@ function displayCoursesMatches(evt, data_to_search)
   suggestions.innerHTML = html;
 }
 
-
 function displayProfessorsMatches(evt, data_to_search)
 {
   console.log("I am here 3");
@@ -114,7 +113,6 @@ function displayProfessorsMatches(evt, data_to_search)
       <p class="category">Other name: ${prof.slug}</p>
       </li>
       `;
-      
     }).join("");
   }
   else {
@@ -124,7 +122,7 @@ function displayProfessorsMatches(evt, data_to_search)
           <p class="category">Check your search</p>
       </li>
       `;
-  }
+    }
 
   suggestions.innerHTML = html;
 }
