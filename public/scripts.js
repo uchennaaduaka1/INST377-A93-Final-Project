@@ -49,59 +49,6 @@ async function mainThread(){
 mainThread().catch(err => {console.error(err)});
 
 
-//async function loadData() {
-  
-//} window.onload = loadData;
-
-
-// const course_data = rawdata[0];
-// const professors_data = rawdata[1];
-
-
-/* Function to get course grade based on parameter */
-
-// Problem here is that the api does not allow access like this from the browser for security reasons.
-/*
-async function getCourseGrades(course_name)
-{
-    const headers = {
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-      'Access-Control-Allow-Origin': '*',
-      'Accept':'application/json', 'Content-Type': ' application/json',
-    };
-    
-    await fetch('https://api.planetterp.com/v1/grades?course=' + course_name,
-    {
-      method: 'GET',
-      headers: headers
-    })
-    .then(function(res) {
-        return res.json();
-    }).then(function(body) {
-        console.log(body);
-    }).catch((err) => {
-      console.log(err);
-    });
-  
-}
-*/
-// Testing with INST377
-// const test_grade = getCourseGrades('INST377');
-/*
-async function getCourseGrade(department, course_number)
-{
-  grade_data = fetch('https://api.planetterp.com/v1/grade$course=' + department + course_number)
-  .then(function(res) {
-      return res.json();
-  }).then(function(body) {
-      console.log(body);
-  });
-    //console.log(grade_data);
-    return grade_data;
-}
-*/
-// Testing with INST377
-// const test_grade = getCourseGrade("INST", "377");
 
 // try -> catch (if we wanted)
 
@@ -123,13 +70,26 @@ function displaymatches(evt, rawdata){
     }
     else {
       console.log(matchArray);
-      return `
+      console.log("Rating:", course.reviews[0]);
+      if (course.reviews[0]){
+        return `
+      <li>
+          <h4 class="name">Professor ${course.name}</h4>
+          <p class="category">${course.courses}</p>
+          <p class = "reviews"> Rating: ${course.reviews[0].rating}</p>
+          <p class = "reviews"> Expected Grade: ${course.reviews[0].expected_grade}</p>
+      </li>
+      `;
+      }
+      else{
+        return `
       <li>
           <h4 class="name">${course.type} ${course.name}</h4>
           <p class="category">${course.courses}</p>
+          <p class = "reviews">No Rating Availiable</p>
       </li>
       `;
-      
+      } 
     }
   }).join('');
   suggestions.innerHTML = html;
