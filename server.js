@@ -83,7 +83,8 @@ app.route('/api')
     //------- returns 2 big arrays, first has course data, second has prof data ---------//
 
     const courseData = await fetch("https://api.planetterp.com/v1/courses");
-    const professorData = await fetch("https://api.planetterp.com/v1/professors");
+    const professorData = await fetch("https://api.planetterp.com/v1/professors?reviews=true");
+    // const gradeData = await fetch("//api.planetterp.com/v1/grades");
 
     Promise.all([courseData, professorData])
     .then(function (responses) {
